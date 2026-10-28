@@ -1,0 +1,35 @@
+{
+  "id": "gerbang_tua_001",
+  "title": "Penjaga Gerbang Tua",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Seorang penjaga tua menghentikanmu di gerbang kecil dan meminta alasan perjalananmu. Ia tampak bosan dan kurang sabar.",
+      "choices": [
+        {
+          "text": "Menjawab dengan sopan dan jujur",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Membentaknya agar menyingkir",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Penjaga itu mengangguk dan membiarkanmu lewat. Sikap tenangmu membuat percakapan berakhir baik.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Penjaga itu mengayunkan tongkatnya dan memukul bahumu sebelum menyuruhmu pergi.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

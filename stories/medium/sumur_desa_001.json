@@ -1,0 +1,48 @@
+{
+  "id": "sumur_desa_001",
+  "title": "Sumur Desa yang Dalam",
+  "type": "medium",
+  "start": "sumur",
+  "nodes": {
+    "sumur": {
+      "text": "Di desa kecil, ember sumur jatuh jauh ke bawah. Seorang warga tua menawarkan 2 koin kepada siapa pun yang bisa mengambilnya.",
+      "choices": [
+        {
+          "text": "Menurunkan diri dengan tali untuk mengambil ember",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "ember_didapat",
+            "failure": "tali_terlepas"
+          }
+        },
+        {
+          "text": "Membantu mencari kait dari bengkel terdekat",
+          "next": "alat"
+        }
+      ]
+    },
+    "ember_didapat": {
+      "text": "Kamu bergerak hati-hati dan berhasil mengaitkan ember. Warga itu membayar upah yang dijanjikan.",
+      "effects": {
+        "gold": 2,
+        "dex": 1
+      },
+      "end": true
+    },
+    "tali_terlepas": {
+      "text": "Tali bergesekan dengan batu tajam dan kamu jatuh pendek ke sisi sumur sebelum berhasil ditarik warga. Tubuhmu memar.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    },
+    "alat": {
+      "text": "Seorang pandai besi meminjamkan kait panjang. Ember berhasil diangkat tanpa membahayakan siapa pun, dan warga memberimu satu koin.",
+      "effects": {
+        "gold": 1
+      },
+      "end": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "anak_tersesat_001",
+  "title": "Anak yang Tersesat",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Di pasar yang ramai, seorang anak kecil menangis karena kehilangan ibunya. Orang-orang berlalu tanpa memperhatikan.",
+      "choices": [
+        {
+          "text": "Menenangkannya dan membantu mencari ibunya",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Membiarkannya mencari sendiri",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Tak lama kemudian, kamu menemukan ibunya. Anak itu tersenyum dan ibunya berterima kasih.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu pergi meninggalkan keramaian. Tangisan anak itu masih terdengar dari kejauhan.",
+      "end": true
+    }
+  }
+}

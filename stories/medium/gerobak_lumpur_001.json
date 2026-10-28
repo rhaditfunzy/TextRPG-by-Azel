@@ -1,0 +1,48 @@
+{
+  "id": "gerobak_lumpur_001",
+  "title": "Gerobak Terjebak Lumpur",
+  "type": "medium",
+  "start": "jalan",
+  "nodes": {
+    "jalan": {
+      "text": "Seorang kusir berusaha mengeluarkan gerobaknya dari lumpur. Roda belakang tertanam dalam, dan barang dagangannya mulai basah.",
+      "choices": [
+        {
+          "text": "Membantu mendorong gerobak",
+          "check": {
+            "attribute": "str",
+            "dc": 11,
+            "success": "berhasil",
+            "failure": "terpeleset"
+          }
+        },
+        {
+          "text": "Menyarankan kusir menurunkan muatan dahulu",
+          "next": "saran"
+        }
+      ]
+    },
+    "berhasil": {
+      "text": "Dengan dorongan bersama, roda terlepas. Kusir menghadiahkan sedikit uang karena kamu menyelamatkan dagangannya.",
+      "effects": {
+        "gold": 3,
+        "str": 1
+      },
+      "end": true
+    },
+    "terpeleset": {
+      "text": "Kamu mendorong sekuat tenaga, tetapi roda tidak bergerak. Kakimu terpeleset dan menghantam batu.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    },
+    "saran": {
+      "text": "Kusir menurunkan dua peti, lalu menarik gerobak dengan lebih mudah. Ia mengucapkan terima kasih dan kamu melanjutkan jalan.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}

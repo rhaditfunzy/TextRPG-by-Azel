@@ -1,0 +1,45 @@
+{
+  "id": "perahu_arus_001",
+  "title": "Perahu Melawan Arus",
+  "type": "medium",
+  "start": "tepi_sungai",
+  "nodes": {
+    "tepi_sungai": {
+      "text": "Sungai meluap setelah hujan. Tukang perahu ragu menyeberangkanmu, tetapi perjalanan memutar akan memakan waktu sehari.",
+      "choices": [
+        {
+          "text": "Menenangkan tukang perahu dan menyusun rute aman",
+          "check": {
+            "attribute": "will",
+            "dc": 12,
+            "success": "menyeberang",
+            "failure": "gagal_meyakinkan"
+          }
+        },
+        {
+          "text": "Mengikuti jalan memutar di tepi sungai",
+          "next": "memutar"
+        }
+      ]
+    },
+    "menyeberang": {
+      "text": "Kamu membantu menjaga perahu tetap menghadap arus. Kalian tiba di seberang dengan selamat dan tukang perahu mengembalikan sebagian ongkosmu.",
+      "effects": {
+        "gold": 1,
+        "will": 1
+      },
+      "end": true
+    },
+    "gagal_meyakinkan": {
+      "text": "Tukang perahu tetap menolak. Perdebatan membuatmu kehilangan waktu dan terpeleset saat turun dari dermaga.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    },
+    "memutar": {
+      "text": "Jalan memutar lebih lambat, tetapi tanahnya cukup kokoh. Kamu tiba di sisi lain tanpa mengambil risiko di air deras.",
+      "end": true
+    }
+  }
+}

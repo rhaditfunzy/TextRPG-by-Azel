@@ -1,0 +1,200 @@
+{
+  "id": "tambang_suara_001",
+  "title": "Suara dari Tambang Tua",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Para penambang dari desa bukit tidak kembali setelah mendengar suara ketukan dari bagian terdalam tambang. Kepala desa menawarkan upah untuk memeriksa keadaan mereka.",
+      "choices": [
+        {
+          "text": "Masuk lewat terowongan utama",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Mencari ventilasi yang ditandai pada peta tambang",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Terowongan utama dipenuhi gerobak terbalik dan bekas goresan alat. Ketukan terdengar dari balik dinding batu.",
+      "choices": [
+        {
+          "text": "Mengikuti ketukan untuk menemukan para penambang",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Memperkuat papan penyangga sebelum maju",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Ventilasi sempit membawa udara segar, tetapi papan penyangganya sudah lapuk.",
+      "choices": [
+        {
+          "text": "Mengikuti ketukan untuk menemukan para penambang",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Memperkuat papan penyangga sebelum maju",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Kamu menemukan ruang kerja kosong dengan lentera masih menyala. Ada bekas bubuk peledak di lantai.",
+      "choices": [
+        {
+          "text": "Meneliti bekas bubuk untuk menentukan sumber suara",
+          "check": {
+            "attribute": "int",
+            "dc": 12,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "int": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Menyusuri jalur alat yang tampak lebih kokoh",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Ventilasi berakhir di rak alat. Sebuah catatan memperingatkan tentang lapisan batu yang rapuh.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Di balik dinding, para penambang terjebak dan meminta bantuan. Batu besar menahan jalan keluar mereka.",
+      "choices": [
+        {
+          "text": "Menyiapkan tuas untuk mengangkat batu penghalang",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menelusuri pipa air untuk menghentikan getaran",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Kamu menemukan ruangan tempat suara ketukan berasal: sebuah palu terjatuh berulang akibat getaran air.",
+      "choices": [
+        {
+          "text": "Menyiapkan tuas untuk mengangkat batu penghalang",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menelusuri pipa air untuk menghentikan getaran",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Saat kamu mengangkat batu, makhluk gua yang terusik menerjang dari celah sempit.",
+      "choices": [
+        {
+          "text": "Mengusir makhluk gua yang menyerang para penambang",
+          "battle": {
+            "enemy": {
+              "name": "Pemangsa Gua",
+              "hp": 4,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Memimpin para penambang mundur melalui lorong yang telah diperiksa",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Air yang dialihkan membuat lantai licin dan satu penambang panik berlari ke arah jurang kecil.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Batu terakhir harus dipindahkan agar para penambang bisa keluar. Mereka siap mendorong bersamamu saat hitungan dimulai.",
+      "choices": [
+        {
+          "text": "Mengangkat batu dengan bantuan para penambang",
+          "check": {
+            "attribute": "str",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "str": 1,
+              "gold": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Meninggalkan perkakas dan membawa semua orang ke luar",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Jalur keluar terbuka, tetapi sebuah peti perkakas tertinggal di ruang yang mulai retak.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Semua penambang berhasil keluar. Kepala desa membayar upah penuh dan para pekerja berjanji memperbaiki jalan menuju tambang.",
+      "effects": {
+        "gold": 4,
+        "will": 1
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu menuntun para penambang ke permukaan sebelum lorong runtuh. Sebagian alat tertinggal, tetapi semua orang selamat.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}

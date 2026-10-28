@@ -1,0 +1,199 @@
+{
+  "id": "karnaval_tengah_malam_001",
+  "title": "Karnaval Tengah Malam",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Sebuah karnaval muncul di lapangan kota hanya setelah tengah malam. Musiknya merdu, tetapi tidak ada satu pun pengunjung yang terlihat berkedip saat tertawa.",
+      "choices": [
+        {
+          "text": "Membeli tiket dan masuk ke tengah keramaian",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Mengamati karnaval dari balik kios kosong",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Penjaga tiket memberimu topeng putih dan mengatakan bahwa semua pengunjung harus mengenakannya.",
+      "choices": [
+        {
+          "text": "Mengenakan topeng sambil mengamati penjaga",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti pekerja menuju bagian belakang tenda",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Dari balik kios, kamu melihat para pekerja bergerak serempak tanpa berbicara satu sama lain.",
+      "choices": [
+        {
+          "text": "Mengenakan topeng sambil mengamati penjaga",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti pekerja menuju bagian belakang tenda",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Seorang pemain sulap menawarkan hadiah jika kamu bisa menebak kartu yang tidak pernah ia tunjukkan.",
+      "choices": [
+        {
+          "text": "Menganalisis trik sulap untuk menemukan cara kerja ilusi",
+          "check": {
+            "attribute": "int",
+            "dc": 13,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "int": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mencocokkan daftar nama dengan wajah para pengunjung",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Di belakang tenda, ada daftar nama warga yang dicoret dengan tinta hitam.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Kamu menemukan lonceng kecil yang membuat para pengunjung tertawa setiap kali dibunyikan.",
+      "choices": [
+        {
+          "text": "Mencari cara menghentikan lonceng",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menyelinap ke ruang musik dan mencari pemimpin karnaval",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Daftar itu mencantumkan nama seorang penjaga kota yang menghilang minggu lalu. Ada pintu menuju ruang musik.",
+      "choices": [
+        {
+          "text": "Mencari cara menghentikan lonceng",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menyelinap ke ruang musik dan mencari pemimpin karnaval",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Sosok bertopeng hitam muncul dan mencoba merebut lonceng dari tanganmu.",
+      "choices": [
+        {
+          "text": "Melawan sosok bertopeng untuk menghentikan pertunjukan",
+          "battle": {
+            "enemy": {
+              "name": "Pengawal Karnaval",
+              "hp": 3,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menyelip di antara kios dan mencari jalan keluar",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Pemain bertopeng hitam menghalangi pintu ruang musik, mengayunkan tongkat berujung logam.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Lonceng harus dibungkus kain tebal atau bunyinya akan memanggil seluruh pengunjung sekaligus.",
+      "choices": [
+        {
+          "text": "Membungkus lonceng tanpa membunyikannya",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "will": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Menarik tuas tirai untuk keluar sebelum karnaval berubah",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Di ruang musik, kamu melihat tuas yang dapat mengangkat tirai besar dan membuka jalan keluar dari lapangan.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Lonceng berhenti berbunyi dan karnaval memudar seperti kabut. Beberapa warga yang tertidur di bawah kios terbangun tanpa ingatan yang jelas.",
+      "effects": {
+        "will": 1,
+        "gold": 2
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu keluar dari lapangan tepat ketika musik berhenti. Pagi harinya, tidak ada jejak karnaval selain tiket kusam di sakumu.",
+      "effects": {
+        "int": 1
+      },
+      "end": true
+    }
+  }
+}

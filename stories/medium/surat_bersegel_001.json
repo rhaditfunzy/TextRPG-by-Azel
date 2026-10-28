@@ -1,0 +1,45 @@
+{
+  "id": "surat_bersegel_001",
+  "title": "Surat Bersegel Lilin",
+  "type": "medium",
+  "start": "surat",
+  "nodes": {
+    "surat": {
+      "text": "Di penginapan, seorang kurir yang mabuk menjatuhkan surat bersegel. Nama penerima sudah luntur, tetapi ada simbol keluarga bangsawan di lilinnya.",
+      "choices": [
+        {
+          "text": "Memeriksa simbol dan tulisan kecil pada amplop",
+          "check": {
+            "attribute": "int",
+            "dc": 12,
+            "success": "asal_usul",
+            "failure": "salah_baca"
+          }
+        },
+        {
+          "text": "Menyerahkan surat kepada pemilik penginapan",
+          "next": "pemilik"
+        }
+      ]
+    },
+    "asal_usul": {
+      "text": "Kamu mengenali lambang itu sebagai milik keluarga yang tinggal di ujung kota. Pemilik surat memberimu imbalan karena kamu menemukan alamatnya.",
+      "effects": {
+        "gold": 3,
+        "int": 1
+      },
+      "end": true
+    },
+    "salah_baca": {
+      "text": "Kamu salah menafsirkan tanda pada amplop dan menyerahkannya ke rumah yang keliru. Penghuninya mengusirmu dengan kasar.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    },
+    "pemilik": {
+      "text": "Pemilik penginapan menyimpan surat itu dan berjanji mencari kurirnya saat sadar. Kamu tak mendapat imbalan, tetapi menghindari masalah.",
+      "end": true
+    }
+  }
+}

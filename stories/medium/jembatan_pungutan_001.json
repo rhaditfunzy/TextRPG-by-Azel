@@ -1,0 +1,47 @@
+{
+  "id": "jembatan_pungutan_001",
+  "title": "Pungutan di Jembatan Kayu",
+  "type": "medium",
+  "start": "jembatan",
+  "nodes": {
+    "jembatan": {
+      "text": "Sebuah jembatan kayu melintasi jurang dangkal. Dua orang bersenjata meminta pungutan 3 koin, meski tidak memakai lambang penjaga resmi.",
+      "choices": [
+        {
+          "text": "Membayar agar bisa lewat",
+          "next": "membayar",
+          "effects": {
+            "gold": -3
+          }
+        },
+        {
+          "text": "Menanyai mereka tentang izin pungutan",
+          "check": {
+            "attribute": "will",
+            "dc": 12,
+            "success": "membongkar",
+            "failure": "diusir"
+          }
+        }
+      ]
+    },
+    "membayar": {
+      "text": "Mereka menerima uangmu dan membiarkanmu menyeberang. Setelah kamu pergi, mereka mulai meminta uang kepada pelancong berikutnya.",
+      "end": true
+    },
+    "membongkar": {
+      "text": "Kamu meminta melihat izin mereka. Keduanya saling pandang, lalu kabur sebelum ada masalah lebih jauh.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    },
+    "diusir": {
+      "text": "Pertanyaanmu membuat mereka marah. Kamu mundur sebelum perkelahian pecah, tetapi salah satu dari mereka sempat memukulmu.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

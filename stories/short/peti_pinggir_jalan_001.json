@@ -1,0 +1,32 @@
+{
+  "id": "peti_pinggir_jalan_001",
+  "title": "Peti di Pinggir Jalan",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Sebuah peti kecil tergeletak di bawah pohon tumbang. Tidak ada orang di sekitar, hanya bekas roda gerobak di tanah.",
+      "choices": [
+        {
+          "text": "Membuka peti",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Meninggalkannya karena terlalu mencurigakan",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Di dalamnya ada beberapa koin yang rupanya tertinggal dari gerobak yang rusak.",
+      "effects": {
+        "gold": 3
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu memilih tidak mengambil risiko dan meneruskan perjalanan.",
+      "end": true
+    }
+  }
+}

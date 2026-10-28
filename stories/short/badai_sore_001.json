@@ -1,0 +1,35 @@
+{
+  "id": "badai_sore_001",
+  "title": "Badai Sore",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Awan hitam menutup langit. Angin bertiup kencang dan hujan deras mulai turun ketika kamu masih jauh dari tempat bermalam.",
+      "choices": [
+        {
+          "text": "Berteduh di bawah pondok tua",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Terus berjalan menerobos hujan",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Kamu menunggu sampai hujan reda. Istirahat singkat membantumu memulihkan tenaga.",
+      "effects": {
+        "heal": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Jalan menjadi licin. Kamu terpeleset di tanah berlumpur dan lututmu terbentur batu.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

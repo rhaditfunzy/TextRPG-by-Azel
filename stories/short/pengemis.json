@@ -1,0 +1,25 @@
+{
+  "id": "pengemis_misterius_001",
+  "title": "Pengemis Misterius",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Di tepi jalan, seorang pengemis tua meminta 5 koin darimu.",
+      "choices": [
+        {"text": "Memberinya 5 koin", "next": "bantu"},
+        {"text": "Menolak permintaannya", "next": "tolak"}
+      ]
+    },
+    "bantu": {
+      "text": "Pengemis itu ternyata tabib keliling. Ia berterima kasih dan merawat lukamu.",
+      "effects": {"gold": -5, "heal": 1},
+      "end": true
+    },
+    "tolak": {
+      "text": "Pengemis itu tersinggung lalu melempar batu ke arahmu.",
+      "effects": {"hp": -1},
+      "end": true
+    }
+  }
+}

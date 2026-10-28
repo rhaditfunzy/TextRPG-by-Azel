@@ -1,0 +1,199 @@
+{
+  "id": "makam_raja_tanpa_nama_001",
+  "title": "Makam Raja Tanpa Nama",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Di padang berbatu, kamu menemukan pintu makam tanpa lambang keluarga. Di atasnya tertulis: “Hanya yang memahami kesunyian boleh masuk.”",
+      "choices": [
+        {
+          "text": "Membaca tulisan dan mencari makna tersembunyi",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Memeriksa celah di sisi makam",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Tulisan pada batu berubah ketika terkena cahaya. Beberapa huruf membentuk teka-teki tentang raja yang menghapus namanya sendiri.",
+      "choices": [
+        {
+          "text": "Mencari jawaban dari teka-teki batu",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Masuk melalui celah sempit dengan hati-hati",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Celah samping cukup besar untuk dimasuki, tetapi udara dari dalam berbau logam dan tanah basah.",
+      "choices": [
+        {
+          "text": "Mencari jawaban dari teka-teki batu",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Masuk melalui celah sempit dengan hati-hati",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Ruang pertama berisi patung tanpa wajah dengan mangkuk kosong di tangannya. Debu di lantai membentuk jejak menuju altar.",
+      "choices": [
+        {
+          "text": "Menafsirkan simbol sebelum menyentuh mekanisme",
+          "check": {
+            "attribute": "int",
+            "dc": 13,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "int": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mencari jalan mengitari kisi besi",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Lorong samping berakhir di kisi besi. Ada tuas di balik jeruji dan beberapa simbol di dinding.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Altar memiliki tiga mangkuk: satu berisi abu, satu air, dan satu koin berkarat. Dinding menyebutkan bahwa raja meninggalkan kemewahan.",
+      "choices": [
+        {
+          "text": "Meletakkan koin di mangkuk abu sebagai tanda melepas harta",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mengikuti petunjuk catatan menuju pintu tersembunyi",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Di balik kisi, kamu menemukan ruang penjaga dan sebuah catatan tentang pintu tersembunyi di belakang patung.",
+      "choices": [
+        {
+          "text": "Meletakkan koin di mangkuk abu sebagai tanda melepas harta",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mengikuti petunjuk catatan menuju pintu tersembunyi",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Lantai makam bergetar. Penjaga batu bangkit dari duduknya dan menghalangi tangga menuju ruang dalam.",
+      "choices": [
+        {
+          "text": "Melawan penjaga makam yang bangkit",
+          "battle": {
+            "enemy": {
+              "name": "Penjaga Makam Batu",
+              "hp": 4,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Mundur ke lorong dan mencari mekanisme untuk menahannya",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Di ruang penjaga, rangka berzirah mengangkat pedang tua saat kamu melewati ambang pintu.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Ruang terakhir berisi peti kecil dengan tulisan “nama bukanlah warisan”. Tutup peti dapat dibuka dengan memutar dua cincin batu.",
+      "choices": [
+        {
+          "text": "Memutar cincin peti dengan cepat sebelum mekanismenya mengunci",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "gold": 3
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Meninggalkan makam tanpa menyentuh peti",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Tangga keluar diterangi cahaya matahari. Kamu mendengar suara batu bergeser dari dalam makam dan harus segera memilih langkah.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Peti terbuka tanpa jebakan. Di dalamnya ada koin kuno dan sebuah cincin sederhana yang ditinggalkan sebagai warisan bagi orang yang tidak serakah.",
+      "effects": {
+        "gold": 4,
+        "will": 1
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu keluar dari makam dengan selamat. Makam kembali sunyi, dan teka-teki tentang nama raja tetap menjadi rahasia.",
+      "effects": {
+        "int": 1
+      },
+      "end": true
+    }
+  }
+}

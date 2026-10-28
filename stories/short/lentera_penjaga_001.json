@@ -1,0 +1,36 @@
+{
+  "id": "lentera_penjaga_001",
+  "title": "Minyak untuk Lentera",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Penjaga malam menawarkan minyak lentera yang hampir habis. Malam ini jalan di luar kota sangat gelap.",
+      "choices": [
+        {
+          "text": "Membeli minyak seharga 2 koin",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Menolak dan berjalan dalam gelap",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Lentera menyala terang. Kamu merasa lebih siap menghadapi perjalanan malam.",
+      "effects": {
+        "gold": -2,
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu berangkat tanpa persiapan. Akar pohon yang tidak terlihat membuatmu tersandung.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

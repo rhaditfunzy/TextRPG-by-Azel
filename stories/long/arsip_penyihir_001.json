@@ -1,0 +1,199 @@
+{
+  "id": "arsip_penyihir_001",
+  "title": "Arsip Penyihir yang Terkunci",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Sebuah menara arsip terbengkalai berdiri di belakang biara. Penjaganya berkata bahwa seorang penyihir menghilang di sana, meninggalkan buku-buku yang tak boleh dibaca sembarang orang.",
+      "choices": [
+        {
+          "text": "Meminta izin dan menjelaskan tujuanmu",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Mencari jendela terbuka di sisi menara",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Penjaga menyerahkan daftar buku yang hilang. Satu judul ditandai berkali-kali dengan tinta merah.",
+      "choices": [
+        {
+          "text": "Mencari judul yang ditandai tinta merah",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti jejak kaki menuju ruang katalog",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Jendela terbuka menuju ruang katalog. Debu menunjukkan bahwa seseorang baru saja masuk sebelum kamu.",
+      "choices": [
+        {
+          "text": "Mencari judul yang ditandai tinta merah",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti jejak kaki menuju ruang katalog",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Buku itu terletak di rak tinggi dan diikat rantai tipis yang dipenuhi simbol.",
+      "choices": [
+        {
+          "text": "Membaca simbol rantai untuk membuka kunci tanpa merusak buku",
+          "check": {
+            "attribute": "int",
+            "dc": 13,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "int": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mencari kunci cadangan di meja petugas",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Katalog menunjukkan bahwa tiga buku dipindahkan ke ruang bawah tanah.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Halaman buku menggambarkan lingkaran penahan makhluk yang dipanggil lewat cermin. Ada goresan baru pada satu bagian lingkaran.",
+      "choices": [
+        {
+          "text": "Menyalin simbol penahan ke lantai",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menutup cermin dan memeriksa catatan lebih dahulu",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Di ruang bawah tanah, kamu menemukan cermin tertutup kain dan catatan mantra yang belum selesai.",
+      "choices": [
+        {
+          "text": "Menyalin simbol penahan ke lantai",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menutup cermin dan memeriksa catatan lebih dahulu",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Cermin bergetar dan sebuah golem kertas muncul, mencoba merebut buku dari tanganmu.",
+      "choices": [
+        {
+          "text": "Menghadapi golem arsip sebelum ia merusak buku",
+          "battle": {
+            "enemy": {
+              "name": "Golem Kertas",
+              "hp": 4,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menjatuhkan buku dan menutup pintu ruang bawah tanah",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Cermin memuntahkan tangan bayangan yang meraih catatan. Udara menjadi dingin dan kaca mulai retak.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Lingkaran penahan hampir lengkap. Kamu harus menggambar lambang terakhir sebelum cermin retak seluruhnya.",
+      "choices": [
+        {
+          "text": "Memusatkan pikiran untuk menyelesaikan lambang penahan",
+          "check": {
+            "attribute": "will",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "will": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Membawa catatan dan meninggalkan menara tanpa mencoba mantra",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Pintu keluar terbuka, tetapi sebuah buku kecil tergeletak sendirian di ambang, berisi nama penyihir yang hilang.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Cermin menjadi tenang dan makhluk itu menghilang. Penjaga arsip mengizinkanmu menyimpan salinan catatan serta memberi hadiah atas bantuanmu.",
+      "effects": {
+        "gold": 2,
+        "int": 1
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu keluar dengan selamat sambil membawa catatan yang tidak berbahaya. Misteri penyihir tetap terbuka, tetapi arsip tidak lagi bergetar.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}

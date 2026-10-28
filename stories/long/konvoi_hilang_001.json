@@ -1,0 +1,199 @@
+{
+  "id": "konvoi_hilang_001",
+  "title": "Konvoi yang Hilang di Jalan Utara",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Seorang pemilik penginapan menawarkan upah untuk menemukan konvoi dagang yang tidak tiba sesuai jadwal. Jejak roda terakhir terlihat menuju jalan berbatu di utara.",
+      "choices": [
+        {
+          "text": "Mengikuti jejak roda yang dalam",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Mencari informasi dari warga desa terakhir",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Jejak roda mengarah ke jembatan yang satu sisinya runtuh. Sebuah kain merah tersangkut pada paku.",
+      "choices": [
+        {
+          "text": "Memeriksa kain dan mencari jalan menyeberang",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Menuju bukit untuk mencari sinyal terompet",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Warga mengatakan mendengar suara terompet dari bukit pada malam hilangnya konvoi.",
+      "choices": [
+        {
+          "text": "Memeriksa kain dan mencari jalan menyeberang",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Menuju bukit untuk mencari sinyal terompet",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Di balik jembatan, kamu menemukan peti pecah dan bekas pertempuran. Jejak kaki menyeret sesuatu ke semak.",
+      "choices": [
+        {
+          "text": "Menyelinap melewati pengawas untuk mengikuti jejak",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "gold": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mengambil jalur terbuka menuju lembah",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Dari bukit terlihat asap tipis di lembah sempit. Ada orang yang mengawasi jalan dari batu besar.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Kamu menemukan pedagang yang terikat di sebuah pohon. Ia memberi tahu bahwa bandit menyembunyikan barang di gua.",
+      "choices": [
+        {
+          "text": "Membebaskan pedagang sebelum mengejar bandit",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menyembunyikan diri dan mengamati para penculik",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Di lembah, sebagian barang dagangan ditumpuk di bawah terpal. Para penculik tampaknya sedang mencari tunggangan.",
+      "choices": [
+        {
+          "text": "Membebaskan pedagang sebelum mengejar bandit",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menyembunyikan diri dan mengamati para penculik",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Tiga bandit menyadari kehadiranmu dan menghunus senjata. Mereka berdiri di antara kamu dan jalan keluar.",
+      "choices": [
+        {
+          "text": "Menghadapi bandit dan membuka jalan bagi para pedagang",
+          "battle": {
+            "enemy": {
+              "name": "Bandit Konvoi",
+              "hp": 4,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menyelinap mundur untuk mencari jalan alternatif",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Seorang bandit berjaga di depan pintu gua, mengantuk dan tidak menyadari kamu mendekat dari belakang.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Konvoi yang tersisa berkumpul di dekat kuda-kuda. Pemimpin mereka meminta bantuan untuk memindahkan peti terakhir sebelum malam.",
+      "choices": [
+        {
+          "text": "Mengangkat peti berat keluar dari jalur runtuhan",
+          "check": {
+            "attribute": "str",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "gold": 2
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Meninggalkan peti dan memandu orang-orang keluar",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Gua penyimpanan mulai runtuh setelah perangkap di pintunya aktif. Kamu hanya punya waktu untuk mengambil satu barang.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Konvoi berhasil dikumpulkan kembali. Pemilik penginapan membayar upah penuh dan para pedagang menghadiahkan beberapa koin tambahan.",
+      "effects": {
+        "gold": 4
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu membawa para penyintas keluar dari bahaya, meski sebagian barang hilang. Mereka tetap berterima kasih atas pertolonganmu.",
+      "effects": {
+        "will": 1,
+        "gold": 1
+      },
+      "end": true
+    }
+  }
+}

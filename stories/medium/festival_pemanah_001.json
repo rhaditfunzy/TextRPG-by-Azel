@@ -1,0 +1,48 @@
+{
+  "id": "festival_pemanah_001",
+  "title": "Lomba Panahan Desa",
+  "type": "medium",
+  "start": "lapangan",
+  "nodes": {
+    "lapangan": {
+      "text": "Festival desa mengadakan lomba panahan sederhana. Hadiahnya 4 koin, dan peserta hanya diberi satu kesempatan untuk mengenai sasaran kayu.",
+      "choices": [
+        {
+          "text": "Ikut lomba dan membidik sasaran",
+          "check": {
+            "attribute": "dex",
+            "dc": 13,
+            "success": "menang",
+            "failure": "meleset"
+          }
+        },
+        {
+          "text": "Menonton peserta lain dan mempelajari tekniknya",
+          "next": "belajar"
+        }
+      ]
+    },
+    "menang": {
+      "text": "Anak panahmu menancap tepat di tengah sasaran. Penonton bersorak dan panitia menyerahkan hadiah kepadamu.",
+      "effects": {
+        "gold": 4,
+        "dex": 1
+      },
+      "end": true
+    },
+    "meleset": {
+      "text": "Anak panahmu meleset dari sasaran. Kamu tidak memenangkan hadiah, tetapi mendapat pengalaman dari kegagalan itu.",
+      "effects": {
+        "dex": 1
+      },
+      "end": true
+    },
+    "belajar": {
+      "text": "Kamu memperhatikan cara para pemanah mengatur napas dan posisi kaki. Kamu melanjutkan perjalanan dengan pengetahuan baru.",
+      "effects": {
+        "dex": 1
+      },
+      "end": true
+    }
+  }
+}

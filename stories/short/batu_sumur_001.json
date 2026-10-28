@@ -1,0 +1,33 @@
+{
+  "id": "batu_sumur_001",
+  "title": "Batu Keberuntungan",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Seorang anak berkata bahwa melempar koin ke sumur tua akan membawa keberuntungan. Ia menawarkan batu kecil sebagai gantinya.",
+      "choices": [
+        {
+          "text": "Membayar 1 koin dan mencoba ritualnya",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Menganggapnya omong kosong",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Batu itu jatuh ke air dengan bunyi nyaring. Kamu pulang dengan keyakinan baru.",
+      "effects": {
+        "gold": -1,
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu pergi, sementara anak itu tertawa dan menyimpan batu tersebut.",
+      "end": true
+    }
+  }
+}

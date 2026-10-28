@@ -1,0 +1,46 @@
+{
+  "id": "tabib_palsu_001",
+  "title": "Tabib dengan Ramuan Ajaib",
+  "type": "medium",
+  "start": "tabib",
+  "nodes": {
+    "tabib": {
+      "text": "Di alun-alun, seorang tabib menjajakan ramuan yang katanya menyembuhkan semua penyakit. Buih aneh muncul dari botol yang ia pegang.",
+      "choices": [
+        {
+          "text": "Memeriksa ramuan dan cara tabib menjelaskannya",
+          "check": {
+            "attribute": "int",
+            "dc": 11,
+            "success": "penipuan",
+            "failure": "tertipu"
+          }
+        },
+        {
+          "text": "Menjauh tanpa ikut campur",
+          "next": "menjauh"
+        }
+      ]
+    },
+    "penipuan": {
+      "text": "Kamu menyadari aroma ramuan itu menyerupai cuka basi. Warga memperingatkan orang lain, dan pedagang asli memberimu hadiah kecil.",
+      "effects": {
+        "gold": 2,
+        "int": 1
+      },
+      "end": true
+    },
+    "tertipu": {
+      "text": "Kamu membeli seteguk ramuan untuk mengujinya. Rasanya membuat perutmu mual dan penjual segera kabur.",
+      "effects": {
+        "gold": -2,
+        "hp": -1
+      },
+      "end": true
+    },
+    "menjauh": {
+      "text": "Kamu memilih tidak terlibat. Kerumunan tetap mengelilingi tabib itu ketika kamu meninggalkan alun-alun.",
+      "end": true
+    }
+  }
+}

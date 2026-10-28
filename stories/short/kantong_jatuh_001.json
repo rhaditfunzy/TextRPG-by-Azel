@@ -1,0 +1,36 @@
+{
+  "id": "kantong_jatuh_001",
+  "title": "Kantong yang Terjatuh",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Di dekat gerbang kota, kamu menemukan kantong kulit berisi koin. Seorang pedagang tampak panik mencari sesuatu.",
+      "choices": [
+        {
+          "text": "Mengembalikan kantong kepada pedagang",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Mengambil koin dan pergi",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Pedagang itu lega dan memberimu upah kecil sebagai tanda terima kasih.",
+      "effects": {
+        "gold": 2
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu mengambil beberapa koin. Namun, tatapan seorang penjaga membuatmu merasa tidak nyaman.",
+      "effects": {
+        "gold": 3,
+        "will": -1
+      },
+      "end": true
+    }
+  }
+}

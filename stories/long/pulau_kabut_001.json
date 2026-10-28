@@ -1,0 +1,198 @@
+{
+  "id": "pulau_kabut_001",
+  "title": "Pulau di Balik Kabut",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Setelah badai, perahumu terdampar di pulau kecil yang tidak tercantum pada peta. Kabut tebal menutupi pantai, dan cahaya redup terlihat dari tengah pulau.",
+      "choices": [
+        {
+          "text": "Mengikuti cahaya redup menuju bukit",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Memeriksa bangkai perahu di pantai",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Di bukit, cahaya berasal dari mercusuar pendek yang apinya hampir padam. Pintu bawahnya terkunci dari dalam.",
+      "choices": [
+        {
+          "text": "Mencari jalan masuk ke mercusuar",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengumpulkan bahan sebelum masuk hutan",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Bangkai perahu menyimpan papan kering, tali, dan peti yang terjepit karang. Ada jejak sepatu menuju hutan.",
+      "choices": [
+        {
+          "text": "Mencari jalan masuk ke mercusuar",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengumpulkan bahan sebelum masuk hutan",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Tangga mercusuar licin dan beberapa anak tangga patah. Di dinding tergantung buku catatan pelaut.",
+      "choices": [
+        {
+          "text": "Memanjat tangga rusak untuk mencapai ruang lampu",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "dex": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mengambil jalan memutar melalui lereng rendah",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Di hutan, kamu menemukan pondok pembuat perahu dengan rangka kayu setengah jadi.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Buku catatan menyebutkan bahwa mercusuar dinyalakan untuk menuntun kapal melewati batu karang tersembunyi.",
+      "choices": [
+        {
+          "text": "Mengisi ulang lampu mercusuar dengan minyak yang tersisa",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menggunakan peta arus untuk mencari teluk terlindung",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Pembuat perahu telah lama pergi, tetapi peta arus laut tergambar di atas meja.",
+      "choices": [
+        {
+          "text": "Mengisi ulang lampu mercusuar dengan minyak yang tersisa",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menggunakan peta arus untuk mencari teluk terlindung",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Di ruang lampu, sosok yang mengenakan mantel pelaut menghalangi sumbu. Ia mengira kamu datang untuk mencuri persediaan.",
+      "choices": [
+        {
+          "text": "Menghadapi penjaga mercusuar yang salah paham",
+          "battle": {
+            "enemy": {
+              "name": "Penjaga Terasing",
+              "hp": 3,
+              "ac": 9,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menjelaskan dari jarak aman dan mundur bila perlu",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Di teluk, seekor kepiting batu besar menjaga peti berisi alat-alat yang dapat memperbaiki perahu.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Mercusuar mulai menyala. Dari kejauhan tampak kapal nelayan merespons sinyalmu dan berbelok menuju teluk.",
+      "choices": [
+        {
+          "text": "Mengencangkan mekanisme lampu agar tetap menyala menghadapi angin",
+          "check": {
+            "attribute": "str",
+            "dc": 11,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "will": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Meninggalkan mercusuar dan memperbaiki perahu sebelum badai datang",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Papan dan tali sudah cukup untuk memperbaiki perahu kecil. Namun kabut bergerak cepat dan ombak mulai naik.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Kapal nelayan menemukanmu saat kabut mulai menipis. Mereka mengantarmu kembali ke daratan dan memberimu beberapa koin sebagai tanda terima kasih.",
+      "effects": {
+        "gold": 3
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu berhasil membuat perahu kecil dan meninggalkan pulau. Perjalanan pulang melelahkan, tetapi peta arus yang kamu temukan akan berguna kelak.",
+      "effects": {
+        "int": 1
+      },
+      "end": true
+    }
+  }
+}

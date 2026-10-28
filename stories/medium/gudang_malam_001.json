@@ -1,0 +1,45 @@
+{
+  "id": "gudang_malam_001",
+  "title": "Suara di Gudang Kosong",
+  "type": "medium",
+  "start": "gudang",
+  "nodes": {
+    "gudang": {
+      "text": "Saat berjalan malam-malam, kamu mendengar suara benda jatuh dari gudang yang seharusnya sudah lama kosong. Pintunya tidak terkunci rapat.",
+      "choices": [
+        {
+          "text": "Mengintip diam-diam melalui celah papan",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "peti_koin",
+            "failure": "ketahuan"
+          }
+        },
+        {
+          "text": "Mengetuk pintu dan memanggil dari luar",
+          "next": "kosong"
+        }
+      ]
+    },
+    "peti_koin": {
+      "text": "Kamu melihat tikus menjatuhkan kotak kecil. Di dalamnya ada koin yang tampaknya ditinggalkan pekerja lama. Kamu mengambil sebagian lalu pergi tanpa merusak apa pun.",
+      "effects": {
+        "gold": 3,
+        "dex": 1
+      },
+      "end": true
+    },
+    "ketahuan": {
+      "text": "Papan berderit keras dan seorang penjaga keluar. Ia mengira kamu pencuri lalu mendorongmu menjauh dari gudang.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    },
+    "kosong": {
+      "text": "Tidak ada jawaban. Setelah menunggu sejenak, kamu menyadari suara tadi mungkin berasal dari tikus dan memilih melanjutkan perjalanan.",
+      "end": true
+    }
+  }
+}

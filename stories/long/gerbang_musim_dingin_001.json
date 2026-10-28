@@ -1,0 +1,199 @@
+{
+  "id": "gerbang_musim_dingin_001",
+  "title": "Gerbang Musim Dingin",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Jalur gunung ditutup oleh gerbang batu setelah badai salju. Di sisi lain, seorang kurir mengatakan bahwa desa terpencil membutuhkan obat sebelum malam berikutnya.",
+      "choices": [
+        {
+          "text": "Mencari jalan melalui celah di tebing",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Memeriksa pos penjaga yang ditinggalkan",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Celah tebing sempit dan dipenuhi salju keras. Tali penanda tua hampir tertutup seluruhnya.",
+      "choices": [
+        {
+          "text": "Mengikuti tali penanda ke sisi gunung",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Menggunakan peta untuk mencari jalur yang lebih rendah",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Pos penjaga berisi peta jalur, selimut, dan tungku yang masih menyimpan bara.",
+      "choices": [
+        {
+          "text": "Mengikuti tali penanda ke sisi gunung",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Menggunakan peta untuk mencari jalur yang lebih rendah",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Di atas tebing, lapisan es retak setiap kali kamu menginjaknya. Angin membawa butiran salju ke wajahmu.",
+      "choices": [
+        {
+          "text": "Menyeberangi lapisan es dengan langkah ringan",
+          "check": {
+            "attribute": "dex",
+            "dc": 13,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "dex": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Turun dan mencari lintasan sungai yang membeku",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Jalur rendah melewati jembatan kayu dengan papan yang hilang di bagian tengah.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Kamu menemukan penanda batu yang menunjukkan gerbang bisa dibuka dari mekanisme di sisi utara.",
+      "choices": [
+        {
+          "text": "Menuju mekanisme gerbang agar jalur terbuka",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mengamankan obat dan mencari jalan ke desa",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Di dekat sungai, sebuah kereta terbalik menyimpan selimut dan satu peti obat yang masih utuh.",
+      "choices": [
+        {
+          "text": "Menuju mekanisme gerbang agar jalur terbuka",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mengamankan obat dan mencari jalan ke desa",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Seekor beruang gunung yang kelaparan berdiri di depan mekanisme dan menggeram saat kamu mendekat.",
+      "choices": [
+        {
+          "text": "Mengusir beruang dari mekanisme gerbang",
+          "battle": {
+            "enemy": {
+              "name": "Beruang Gunung",
+              "hp": 4,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menghindari hewan dan mencari rute lain melalui lereng",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Dua perampok salju mendatangi kereta dan mengklaim semua barang sebagai milik mereka.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Roda gerbang membeku. Kamu bisa memanaskannya dengan bara dari pos atau mendorongnya dengan seluruh tenaga.",
+      "choices": [
+        {
+          "text": "Mendorong roda gerbang hingga mekanismenya bergerak",
+          "check": {
+            "attribute": "str",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "str": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Membawa obat lewat jalur rendah sebelum salju menutupnya",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Obat sudah aman, tetapi badai semakin rapat. Kamu harus memilih apakah akan mencoba membuka gerbang atau langsung menuju desa.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Gerbang terbuka dan kurir membawa obat tepat waktu. Penjaga gunung membayar jasamu serta mencatat jalur baru yang kamu temukan.",
+      "effects": {
+        "gold": 3,
+        "will": 1
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu tiba di desa melalui jalur rendah sebelum badai menutup jalan. Obat berhasil diserahkan meski perjalanan menguras tenagamu.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}

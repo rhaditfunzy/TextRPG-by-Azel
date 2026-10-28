@@ -1,0 +1,46 @@
+{
+  "id": "topeng_pasar_001",
+  "title": "Topeng dari Pasar Malam",
+  "type": "medium",
+  "start": "lapak",
+  "nodes": {
+    "lapak": {
+      "text": "Seorang pembuat topeng menawarkan topeng kayu bercorak burung hantu. Katanya, topeng itu membantu pemakainya tetap tenang di tengah keramaian.",
+      "choices": [
+        {
+          "text": "Membeli topeng seharga 3 koin",
+          "next": "membeli",
+          "effects": {
+            "gold": -3,
+            "will": 1
+          }
+        },
+        {
+          "text": "Memeriksa ukiran dan bahan pembuatannya",
+          "check": {
+            "attribute": "int",
+            "dc": 11,
+            "success": "asli",
+            "failure": "biasa"
+          }
+        }
+      ]
+    },
+    "membeli": {
+      "text": "Topeng itu pas di wajahmu dan membuatmu merasa lebih percaya diri saat berjalan di pasar yang penuh sesak.",
+      "end": true
+    },
+    "asli": {
+      "text": "Kamu menemukan tanda tangan pembuat topeng terkenal di bagian dalamnya. Ia tersenyum dan memberimu potongan harga untuk pembelian berikutnya.",
+      "effects": {
+        "gold": 1,
+        "int": 1
+      },
+      "end": true
+    },
+    "biasa": {
+      "text": "Topeng itu dibuat dengan baik, tetapi tidak memiliki keistimewaan. Kamu berterima kasih dan melanjutkan perjalanan.",
+      "end": true
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "id": "menara_lonceng_001",
+  "title": "Menara Lonceng yang Terlupakan",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Di atas bukit berdiri menara lonceng tua yang sudah puluhan tahun tak digunakan. Malam ini, loncengnya terdengar berdentang meski tidak ada angin.",
+      "choices": [
+        {
+          "text": "Menaiki tangga utama yang retak",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Memeriksa pintu kecil di belakang menara",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Tangga utama berderit di bawah kakimu. Di dinding terdapat bekas goresan panjang, seolah sesuatu diseret ke atas.",
+      "choices": [
+        {
+          "text": "Mengikuti bekas goresan ke tingkat berikutnya",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Membawa tali dan mencari jalur lain",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Pintu belakang membuka ke ruang penyimpanan berdebu. Di sana ada tali tua dan jejak kaki baru.",
+      "choices": [
+        {
+          "text": "Mengikuti bekas goresan ke tingkat berikutnya",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Membawa tali dan mencari jalur lain",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Di lantai kedua, sebuah papan rapuh menutupi lubang besar. Cahaya bulan terlihat jauh di bawah.",
+      "choices": [
+        {
+          "text": "Melompati papan rapuh untuk mencapai pegangan di seberang",
+          "check": {
+            "attribute": "dex",
+            "dc": 12,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "dex": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Berjalan memutar melalui lorong samping",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Lorong samping dipenuhi sarang kelelawar yang terusik oleh langkahmu.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Kamu menemukan ruang mekanisme. Roda gigi terkunci oleh batang besi yang baru dipasang.",
+      "choices": [
+        {
+          "text": "Melepaskan pengunci mekanisme",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mencari siapa yang memasang batang besi",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Di ruang kecil, catatan penjaga menjelaskan bahwa lonceng hanya boleh dibunyikan saat bahaya datang.",
+      "choices": [
+        {
+          "text": "Melepaskan pengunci mekanisme",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Mencari siapa yang memasang batang besi",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Seseorang berjubah muncul dari balik roda gigi dan mengangkat tongkat untuk menyerang.",
+      "choices": [
+        {
+          "text": "Melawan penyusup yang menjaga mekanisme",
+          "battle": {
+            "enemy": {
+              "name": "Penjaga Menara",
+              "hp": 3,
+              "ac": 9,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Mundur ke ruang catatan dan mencari jalan keluar",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Tangga terakhir menuju ruang lonceng dijaga oleh sosok berzirah tua yang bergerak kaku.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Mekanisme mulai bergerak. Kamu melihat tali lonceng tersangkut dan bisa menariknya sekali untuk memberi tanda ke desa.",
+      "choices": [
+        {
+          "text": "Menarik tuas berat agar lonceng berbunyi",
+          "check": {
+            "attribute": "str",
+            "dc": 11,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "gold": 2,
+              "will": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Turun sebelum warga dan penjaga tiba",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Ruang lonceng kini sunyi. Dari jendela, kamu melihat cahaya obor warga mendekat ke kaki menara.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Lonceng berbunyi keras di atas bukit. Warga datang dan memuji keberanianmu; mereka menyerahkan hadiah untuk memperbaiki menara.",
+      "effects": {
+        "gold": 3
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu turun dengan selamat sebelum keadaan memburuk. Rahasia dentang malam itu belum terpecahkan, tetapi kamu membawa pulang catatan penjaga.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}

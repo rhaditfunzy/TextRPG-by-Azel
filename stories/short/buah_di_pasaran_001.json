@@ -1,0 +1,33 @@
+{
+  "id": "buah_di_pasaran_001",
+  "title": "Buah dari Pasar",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Pedagang buah mengumumkan bahwa buah terakhirnya bisa memulihkan tenaga. Harganya 2 koin.",
+      "choices": [
+        {
+          "text": "Membeli buah itu",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Menyimpan uang dan melanjutkan perjalanan",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Buahnya segar dan manis. Sedikit tenaga kembali setelah kamu memakannya.",
+      "effects": {
+        "gold": -2,
+        "heal": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Kamu melanjutkan perjalanan tanpa membeli apa pun.",
+      "end": true
+    }
+  }
+}

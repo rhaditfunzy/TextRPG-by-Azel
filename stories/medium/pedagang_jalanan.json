@@ -1,0 +1,32 @@
+{
+  "id": "pedagang_jalanan_001",
+  "title": "Tawaran Sang Pedagang",
+  "type": "medium",
+  "start": "bertemu",
+  "nodes": {
+    "bertemu": {
+      "text": "Sebuah gerobak pedagang menghalangi jalan. Pedagang itu menawarkan peta tua seharga 6 koin, tetapi kamu curiga harganya terlalu mahal.",
+      "choices": [
+        {
+          "text": "Tawar dengan argumen yang masuk akal",
+          "check": {"attribute": "int", "dc": 11, "success": "tawar_berhasil", "failure": "tawar_gagal"}
+        },
+        {"text": "Tidak jadi membeli dan melanjutkan perjalanan", "next": "pergi"}
+      ]
+    },
+    "tawar_berhasil": {
+      "text": "Kamu menunjukkan bahwa peta itu sudah usang. Pedagang setuju menjualnya murah, lalu memberimu 2 koin sebagai uang kembalian dari transaksi yang menguntungkan.",
+      "effects": {"gold": 2},
+      "end": true
+    },
+    "tawar_gagal": {
+      "text": "Argumenmu berantakan. Pedagang kesal dan menyuruhmu pergi. Saat berbalik, roda gerobaknya mengenai kakimu.",
+      "effects": {"hp": -1},
+      "end": true
+    },
+    "pergi": {
+      "text": "Kamu memilih menyimpan uangmu. Pedagang kembali mengurus dagangannya sementara kamu melanjutkan perjalanan.",
+      "end": true
+    }
+  }
+}

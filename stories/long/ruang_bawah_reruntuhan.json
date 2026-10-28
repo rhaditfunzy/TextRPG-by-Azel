@@ -1,0 +1,70 @@
+{
+  "id": "ruang_bawah_reruntuhan_001",
+  "title": "Ruang Bawah Reruntuhan",
+  "type": "long",
+  "start": "pintu_masuk",
+  "nodes": {
+    "pintu_masuk": {
+      "text": "Di balik reruntuhan sebuah benteng, kamu menemukan pintu batu yang terbuka sedikit. Udara dingin berembus dari lorong gelap di bawahnya.",
+      "choices": [
+        {"text": "Masuk dan memeriksa lorong", "next": "lorong"},
+        {
+          "text": "Memaksa membuka pintu batu yang macet",
+          "check": {"attribute": "str", "dc": 12, "success": "ruang_petualang", "failure": "perangkap"}
+        }
+      ]
+    },
+    "lorong": {
+      "text": "Lorong itu dipenuhi ukiran pudar. Di ujungnya ada altar kecil dan sebuah pintu besi. Kamu mendengar sesuatu bergerak di balik pintu.",
+      "choices": [
+        {
+          "text": "Mempelajari ukiran untuk mencari petunjuk",
+          "check": {"attribute": "int", "dc": 12, "success": "ruang_rahasia", "failure": "perangkap"}
+        },
+        {
+          "text": "Membuka pintu besi dan menghadapi penjaga",
+          "battle": {
+            "enemy": {"name": "Penjaga Berkarat", "hp": 4, "ac": 10, "attack_bonus": 0, "damage_min": 1, "damage_max": 1},
+            "win": "kemenangan",
+            "lose": "mundur"
+          }
+        }
+      ]
+    },
+    "ruang_petualang": {
+      "text": "Dengan dorongan kuat, pintu batu terbuka. Di baliknya terdapat ruang kecil berisi peti yang belum pernah dijarah.",
+      "choices": [
+        {"text": "Membuka peti", "next": "harta"},
+        {"text": "Pergi sebelum sesuatu datang", "next": "keluar"}
+      ]
+    },
+    "perangkap": {
+      "text": "Salah satu batu lantai amblas. Sebuah perangkap tua menyemburkan debu dan serpihan batu sebelum mekanismenya berhenti.",
+      "effects": {"hp": -1},
+      "end": true
+    },
+    "ruang_rahasia": {
+      "text": "Kamu berhasil memahami ukiran. Sebuah panel rahasia terbuka, memperlihatkan kantong koin dan botol ramuan yang masih tersegel.",
+      "effects": {"gold": 6, "heal": 1},
+      "end": true
+    },
+    "kemenangan": {
+      "text": "Penjaga berkarat itu roboh. Di belakangnya, kamu menemukan beberapa koin yang terselip di antara batu-batu.",
+      "effects": {"gold": 5},
+      "end": true
+    },
+    "mundur": {
+      "text": "Kamu berhasil mundur dari ruangan, tetapi harus meninggalkan lorong itu tanpa mengetahui apa yang dijaga makhluk tersebut.",
+      "end": true
+    },
+    "harta": {
+      "text": "Peti itu berisi koin dan perban yang masih dapat digunakan. Kamu mengambilnya sebelum meninggalkan reruntuhan.",
+      "effects": {"gold": 7, "heal": 1},
+      "end": true
+    },
+    "keluar": {
+      "text": "Kamu memilih tidak mengambil risiko. Lorong itu kembali sunyi saat kamu keluar menuju udara terbuka.",
+      "end": true
+    }
+  }
+}

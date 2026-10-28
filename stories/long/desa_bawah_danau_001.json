@@ -1,0 +1,199 @@
+{
+  "id": "desa_bawah_danau_001",
+  "title": "Desa di Bawah Danau",
+  "type": "long",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Saat danau surut, atap-atap rumah tua muncul dari permukaan air. Seorang nelayan berkata bahwa desa itu tenggelam dalam satu malam dan tidak pernah ditemukan lagi.",
+      "choices": [
+        {
+          "text": "Menyusuri jalan batu yang muncul dari air",
+          "next": "tahap1_a"
+        },
+        {
+          "text": "Memeriksa perahu tua yang terikat di dermaga",
+          "next": "tahap1_b"
+        }
+      ]
+    },
+    "tahap1_a": {
+      "text": "Jalan batu menuju menara lonceng yang setengah terendam. Bunyi dentang lemah terdengar dari dalamnya.",
+      "choices": [
+        {
+          "text": "Menuju menara lonceng untuk mencari sumber suara",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti peta menuju rumah kepala desa",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap1_b": {
+      "text": "Perahu tua memiliki dayung utuh dan peta kasar yang menandai rumah kepala desa.",
+      "choices": [
+        {
+          "text": "Menuju menara lonceng untuk mencari sumber suara",
+          "next": "tahap2_a"
+        },
+        {
+          "text": "Mengikuti peta menuju rumah kepala desa",
+          "next": "tahap2_b"
+        }
+      ]
+    },
+    "tahap2_a": {
+      "text": "Tangga menara licin oleh lumut. Ada tali lonceng yang bergerak sendiri meski tidak ada angin.",
+      "choices": [
+        {
+          "text": "Memasuki menara sambil menahan rasa takut terhadap suara aneh",
+          "check": {
+            "attribute": "will",
+            "dc": 12,
+            "success": "tahap3_a",
+            "failure": "tahap3_b",
+            "success_effects": {
+              "will": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mempelajari daftar nama dari tempat yang kering",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap2_b": {
+      "text": "Rumah kepala desa berisi meja besar dan daftar nama penduduk yang ditulis sebelum banjir.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap3_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap3_b"
+        }
+      ]
+    },
+    "tahap3_a": {
+      "text": "Lonceng kecil di ruang atas terikat pada mekanisme pintu air. Catatan menunjukkan bahwa saluran air pernah sengaja dibuka.",
+      "choices": [
+        {
+          "text": "Mencari mekanisme pintu air di bawah menara",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menelusuri jalan menuju bangunan bendungan",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap3_b": {
+      "text": "Daftar nama mencantumkan seorang penjaga bendungan yang menghilang sesaat sebelum banjir.",
+      "choices": [
+        {
+          "text": "Mencari mekanisme pintu air di bawah menara",
+          "next": "tahap4_a"
+        },
+        {
+          "text": "Menelusuri jalan menuju bangunan bendungan",
+          "next": "tahap4_b"
+        }
+      ]
+    },
+    "tahap4_a": {
+      "text": "Di ruang air, seekor makhluk bersisik menjaga roda kendali yang tertutup kerak.",
+      "choices": [
+        {
+          "text": "Mengusir makhluk penjaga dari roda kendali",
+          "battle": {
+            "enemy": {
+              "name": "Penjaga Danau",
+              "hp": 3,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "tahap5_a",
+            "lose": "tahap5_b"
+          }
+        },
+        {
+          "text": "Menjauh dari ruang air dan mencari jalan ke permukaan",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap4_b": {
+      "text": "Di bendungan, pintu besi macet dan arus mulai meningkat, memaksamu bekerja cepat.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "tahap5_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "tahap5_b"
+        }
+      ]
+    },
+    "tahap5_a": {
+      "text": "Roda kendali memiliki dua posisi. Catatan menyebutkan bahwa satu posisi mengeringkan rumah-rumah, sedangkan yang lain menjaga ruang bawah tetap tertutup.",
+      "choices": [
+        {
+          "text": "Memahami tanda roda dan memilih posisi yang aman bagi reruntuhan",
+          "check": {
+            "attribute": "int",
+            "dc": 12,
+            "success": "akhir_a",
+            "failure": "akhir_b",
+            "success_effects": {
+              "int": 1
+            },
+            "failure_effects": {
+              "hp": -1
+            }
+          }
+        },
+        {
+          "text": "Mengambil peti lalu kembali ke daratan sebelum air naik",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "tahap5_b": {
+      "text": "Air terus naik di jalan batu. Kamu melihat peti kecil tersangkut di ambang rumah, tidak jauh dari jalan keluar.",
+      "choices": [
+        {
+          "text": "Melanjutkan dengan hati-hati",
+          "next": "akhir_a"
+        },
+        {
+          "text": "Memilih jalur lain yang lebih aman",
+          "next": "akhir_b"
+        }
+      ]
+    },
+    "akhir_a": {
+      "text": "Kamu mengatur roda ke posisi yang benar. Air bergerak surut dari ruang bawah dan sebuah kotak upeti berisi koin muncul di dekat tangga.",
+      "effects": {
+        "gold": 3,
+        "int": 1
+      },
+      "end": true
+    },
+    "akhir_b": {
+      "text": "Kamu kembali ke daratan dengan selamat dan menyerahkan catatan desa kepada nelayan. Ia membayarmu karena mengungkap sebagian sejarah yang hilang.",
+      "effects": {
+        "gold": 2
+      },
+      "end": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "altar_rerumputan_001",
+  "title": "Altar di Pinggir Jalan",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Sebuah altar batu kecil tertutup lumut berdiri di antara rerumputan. Di atasnya tergeletak bunga yang masih segar.",
+      "choices": [
+        {
+          "text": "Meletakkan bunga dan berdoa",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Mengambil mangkuk persembahan",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Angin sejuk berembus. Kamu bangkit dengan pikiran yang lebih tenang.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Mangkuk itu berisi satu koin, tetapi batu altar bergeser dan menghantam tanganmu.",
+      "effects": {
+        "gold": 1,
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "anjing_kelaparan_001",
+  "title": "Anjing Kelaparan",
+  "type": "short",
+  "start": "awal",
+  "nodes": {
+    "awal": {
+      "text": "Seekor anjing kurus mengikuti langkahmu sambil mengendus kantong bekal. Ia tampak sangat lapar, tetapi juga waspada.",
+      "choices": [
+        {
+          "text": "Membeli sisa daging untuknya seharga 2 koin",
+          "next": "pilihan_a"
+        },
+        {
+          "text": "Mengusirnya agar tidak mengikuti",
+          "next": "pilihan_b"
+        }
+      ]
+    },
+    "pilihan_a": {
+      "text": "Anjing itu makan dengan lahap lalu mengibaskan ekornya. Perjalanan terasa sedikit lebih menyenangkan.",
+      "effects": {
+        "gold": -2,
+        "will": 1
+      },
+      "end": true
+    },
+    "pilihan_b": {
+      "text": "Anjing itu menggonggong dan menggigit kakimu sebelum kabur ke gang.",
+      "effects": {
+        "hp": -1
+      },
+      "end": true
+    }
+  }
+}

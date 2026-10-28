@@ -1,0 +1,50 @@
+{
+  "id": "tantangan_jembatan_001",
+  "title": "Tantangan di Jembatan",
+  "type": "medium",
+  "start": "tantangan",
+  "nodes": {
+    "tantangan": {
+      "text": "Seorang pendekar menghalangi jembatan dan menantang siapa pun yang ingin lewat. Ia tampak lebih ingin pamer daripada benar-benar membunuh.",
+      "choices": [
+        {
+          "text": "Menerima tantangannya",
+          "battle": {
+            "enemy": {
+              "name": "Pendekar Sombong",
+              "hp": 3,
+              "ac": 10,
+              "attack_bonus": 0,
+              "damage_min": 1,
+              "damage_max": 1
+            },
+            "win": "menang",
+            "lose": "mundur"
+          }
+        },
+        {
+          "text": "Menolak dan menawarkan salam hormat",
+          "next": "damai"
+        }
+      ]
+    },
+    "menang": {
+      "text": "Pendekar itu mengakui kemampuanmu dan menyingkir dari jembatan. Sebuah koin jatuh dari kantongnya saat ia mengambil senjatanya.",
+      "effects": {
+        "gold": 2
+      },
+      "end": true
+    },
+    "mundur": {
+      "text": "Kamu mundur dan membiarkan pendekar itu tetap berjaga. Jembatan aman untuk saat ini, tetapi kamu harus mencari jalan memutar.",
+      "end": true
+    },
+    "damai": {
+      "text": "Pendekar itu terkejut oleh sikap tenangmu, lalu tertawa dan membiarkanmu lewat tanpa pertarungan.",
+      "effects": {
+        "will": 1
+      },
+      "end": true
+    }
+  }
+}
