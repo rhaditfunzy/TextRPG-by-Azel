@@ -5,6 +5,8 @@
 $ErrorActionPreference = "Stop"
 $IntervalSeconds = 600
 $RepoPath = $PSScriptRoot
+$DefaultRepoUrl = "https://github.com/rhaditfunzy/TextRPG-by-Azel.git"
+$RepoUrl = if ($env:TEXTRPG_REPO_URL) { $env:TEXTRPG_REPO_URL } else { $DefaultRepoUrl }
 
 Set-Location $RepoPath
 
@@ -17,9 +19,43 @@ function Invoke-Git {
     }
 }
 
+function Ensure-RepoRemote {
+    git remote get-url origin *> $null
+    if ($LASTEXITCODE -ne 0) {
+        Invoke-Git -GitArgs @("remote", "add", "origin", $RepoUrl)
+    }
+    else {
+        $CurrentUrl = git remote get-url origin
+        if ($CurrentUrl -ne $RepoUrl) {
+            Invoke-Git -GitArgs @("remote", "set-url", "origin", $RepoUrl)
+        }
+    }
+}
+
+function Ensure-Branch {
+    $Branch = git branch --show-current
+    if (-not $Branch) {
+        $Branch = "main"
+    }
+
+    git rev-parse --verify $Branch *> $null
+    if ($LASTEXITCODE -ne 0) {
+        Invoke-Git -GitArgs @("checkout", "-b", $Branch)
+    }
+    else {
+        git checkout $Branch *> $null
+        if ($LASTEXITCODE -ne 0) {
+            throw "Gagal berpindah ke branch '$Branch'."
+        }
+    }
+
+    return $Branch
+}
+
 Write-Host "===================================="
 Write-Host " TextRPG Automatic GitHub Sync"
 Write-Host " Interval: 10 menit"
+Write-Host " Remote: $RepoUrl"
 Write-Host " Tekan Ctrl+C untuk berhenti"
 Write-Host "===================================="
 
@@ -28,6 +64,9 @@ git rev-parse --is-inside-work-tree *> $null
 if ($LASTEXITCODE -ne 0) {
     throw "Folder ini bukan repository Git."
 }
+
+Ensure-RepoRemote
+$CurrentBranch = Ensure-Branch
 
 while ($true) {
     $Time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
@@ -44,11 +83,9 @@ while ($true) {
             Write-Host "Perubahan ditemukan:"
             $Changes | ForEach-Object { Write-Host "  $_" }
 
-            # Beri waktu agar proses penyuntingan selesai.
             Write-Host "Menunggu 60 detik sebelum commit..."
             Start-Sleep -Seconds 60
 
-            # Periksa kembali setelah jeda.
             $Changes = git status --porcelain
             if ($LASTEXITCODE -ne 0) {
                 throw "Pemeriksaan ulang Git gagal."
@@ -57,7 +94,6 @@ while ($true) {
             if ($Changes) {
                 Invoke-Git -GitArgs @("add", "-A")
 
-                # Commit hanya jika ada perubahan yang di-stage.
                 git diff --cached --quiet
                 $DiffExit = $LASTEXITCODE
 
@@ -74,10 +110,17 @@ while ($true) {
             Write-Host "Tidak ada perubahan file."
         }
 
-        # Selalu coba push, termasuk untuk commit lokal
-        # yang sebelumnya gagal diunggah.
-        Invoke-Git -GitArgs @("push")
+        git ls-remote --exit-code --heads origin $CurrentBranch *> $null
+        if ($LASTEXITCODE -eq 0) {
+            try {
+                Invoke-Git -GitArgs @("pull", "--rebase", "origin", $CurrentBranch)
+            }
+            catch {
+                Write-Host "Pull rebase dibatalkan atau gagal, tetap lanjut ke push."
+            }
+        }
 
+        Invoke-Git -GitArgs @("push", "--set-upstream", "origin", $CurrentBranch)
         Write-Host "Sinkronisasi selesai."
     }
     catch {
