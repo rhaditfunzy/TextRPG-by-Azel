@@ -3,7 +3,7 @@
 # Default interval: 10 minutes
 
 $ErrorActionPreference = "Stop"
-$IntervalSeconds = 600
+$IntervalSeconds = 300
 $RepoPath = $PSScriptRoot
 $DefaultRepoUrl = "https://github.com/rhaditfunzy/TextRPG-by-Azel.git"
 $RepoUrl = if ($env:TEXTRPG_REPO_URL) { $env:TEXTRPG_REPO_URL } else { $DefaultRepoUrl }
@@ -33,7 +33,8 @@ function Ensure-RepoRemote {
 }
 
 function Ensure-Branch {
-    $Branch = git branch --show-current
+    $CurrentBranch = git branch --show-current
+    $Branch = $CurrentBranch
     if (-not $Branch) {
         $Branch = "main"
     }
@@ -42,7 +43,7 @@ function Ensure-Branch {
     if ($LASTEXITCODE -ne 0) {
         Invoke-Git -GitArgs @("checkout", "-b", $Branch)
     }
-    else {
+    elseif ($CurrentBranch -ne $Branch) {
         git checkout $Branch *> $null
         if ($LASTEXITCODE -ne 0) {
             throw "Gagal berpindah ke branch '$Branch'."
@@ -54,7 +55,7 @@ function Ensure-Branch {
 
 Write-Host "===================================="
 Write-Host " TextRPG Automatic GitHub Sync"
-Write-Host " Interval: 10 menit"
+Write-Host " Interval: $($IntervalSeconds / 60) menit"
 Write-Host " Remote: $RepoUrl"
 Write-Host " Tekan Ctrl+C untuk berhenti"
 Write-Host "===================================="
